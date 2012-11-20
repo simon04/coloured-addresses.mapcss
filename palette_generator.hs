@@ -31,6 +31,7 @@ prefix_color = [([i,j], colors!!(hash (ord i) (ord j))) |
 
 rule (prefix, color) =
   "area[building]" ++ prefixfun "addr:street" prefix ++ " {" ++ colorfun "color" ++ colorfun "fill-color" ++ "}\n" ++
+  "node" ++ prefixfun "addr:street" prefix ++ "::halo" ++ " {" ++ colorfun "color" ++ colorfun "symbol-fill-color" ++ "symbol-shape: circle; symbol-size: 20; z-index: -1;" ++ "}\n" ++
   "way" ++ prefixfun "name" prefix ++ " {" ++ colorfun "color" ++ "}\n"
   where
     prefixfun k v = "[\"" ++ k ++ "\"^=\"" ++ v ++ "\"]"
